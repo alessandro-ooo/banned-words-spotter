@@ -1,5 +1,6 @@
 import {hasBannedWords, redactBannedWords} from "./helpers/functions";
 
+
 console.log(redactBannedWords("Leave this badword outta my badwording face!"));
 // Output: Leave this ***** outta my ***** face!
 
