@@ -1,88 +1,71 @@
 import bannedWords from "./banned-words.json";
 
 /**
- * @description This function is useful when you need to **
- * @param word word to be checked if it is banned
- * @param censor (optional) string to replace the banned word with. Default is "*****"
- * @returns censor if word is banned, otherwise returns word.
+ * @description hasBannedWords checks if a word or a long text contains banned words.
+ * @param text text to be checked if it contains banned words
+ * @returns boolean
  * 
- * @example console.log(hideBannedWord("badword"));
- * Output: *****
- * console.log(hideBannedWord("badword", "@#!"));
- * Output: @#!
- * Output: This word is banned.
+ * @example hasBannedWords("Badword");
+ * Output: true
  */
-const hideBannedWord = (word: string, censor: string = "*****"): string => {
+const hasBannedWords = (text: string): boolean =>{
+    if(text.length == 1) {
 
-    if(isWordBanned(word)) {
-        return censor;
+        if(bannedWords.words.includes(text)){ 
+            return true;
+        }
     }
 
-    return word;
+    if(text.length > 1) {
+        const words: string[] = text.split(" ");
+
+        for(let i = 0; i < words.length; i++) {
+            if(bannedWords.words.includes(words[i])) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 /**
- * @description This function is useful when you need to sanitize a very long text.
- * @param text text to be sanitized
+ * @description redactBannedWords redacts banned words in a text and/or long text.
+ * @param text text to be redacted
  * @param censor (optional) string to replace the banned word with. Default is "*****"
  * @returns text with banned words replaced with censor.
  * 
- * @example const vulgarSentence: string = sanitizeText("Leave this badword outta my badwording face!");
+ * @example redactBannedWords("Leave this badword outta my badwording face!");
  * Output: Leave this ***** outta my ***** face!
- * const customVulgarSentence: string = sanitizeText("Leave this badword outta my badwording face!", "bobba");
- * Output: Leave this bobba outta my bobba face!
- *
+ * 
+ * @example redactBannedWords("Leave this badword outta my badwording face!", "[REDACTED]");
+ * Output: Leave this [REDACTED] outta my [REDACTED] face! 
+ * 
  */
-const sanitizeText = (text: string, censor: string = "*****"): string => {
+const redactBannedWords = (text: string, censor: string = "******"): string => {
+    if(text.length == 1) {
 
-    const words: string[] = text.split(" ");
-
-    words.forEach((word, i) => {
-        if (isWordBanned(word)) {
-            words[i] = censor;
+        if(bannedWords.words.includes(text)){ 
+            return censor;
         }
-    });
+    }
 
-    return words.join(" ");
+    if(text.length > 1) {
+        const words: string[] = text.split(" ");
 
-}
-
-/**
- * @description This function is useful when you need to check if a long text contains a banned word but you don't want to edit it.
- * @param text text to be checked
- * @returns array of indexes of banned words in the text.
- * 
- * @example (doesTextContainBannedWord("Leave this badword outta my face!") ? console.log("It does") : console.log("It does not"));
- * Output: It does.
- * (doesTextContainBannedWord("Leave this thing outta my face!") ? console.log("It does") : console.log("It does not"));
- * Output: It does not.
- * 
- */
-const doesTextContainBannedWord = (text: string): number[] => {
-
-    const words: string[] = text.split(" ");
-    const iBannedWords: number[] = [];
-
-    words.forEach((word, i) => {
-        if (isWordBanned(word)) {
-            iBannedWords.push(i);
-        }
-    });
-
-    return iBannedWords;
-}
-
-/**
- * @description This function is useful when you need to check if a word is banned.
- * @param word word to be checked if it is banned
- * @returns true if word is banned, otherwise returns false.
- * 
- * @example (isWordBanned("badword") ? console.log("This word is banned") : console.log("This word is not banned"));
- * Output: This word is banned.
- */
-const isWordBanned = (word: string): boolean => {
+        words.forEach((word, i) => {
+            if (hasBannedWords(word)) {
+                words[i] = censor;
+            }
+        });
     
-    return bannedWords.words.includes(word);
+        return words.join(" ");
+    }
+    
+    return text;
 }
 
-export {isWordBanned, hideBannedWord, doesTextContainBannedWord, sanitizeText};
+export {
+    hasBannedWords, 
+    redactBannedWords
+};
