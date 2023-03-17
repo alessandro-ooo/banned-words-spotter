@@ -1,25 +1,31 @@
 {
-  "name": "ts-banned-words",
-  "version": "1.0.0",
-  "description": "Banned words detector in typescript",
-  "main": "index.js",
+  "name": "banned-words-spotter",
+  "version": "1.1.0",
+  "description": "Banned words detector",
+  "main": "build/functions.js",
+  "types": "build/functions.d.ts",
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start:dev": "npx nodemon",
     "start": "npm run build && node build/index.js"
   },
-
-  "keywords": ["profanity", "banned words", "typescript", "detector"],
+  "keywords": [
+    "profanity",
+    "banned words",
+    "typescript",
+    "detector"
+  ],
   "author": "Alessandro Buonocore",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.6.1",
+    "nodemon": "^2.0.19",
     "rimraf": "^3.0.2",
     "run-script-os": "^1.1.6",
     "ts-node": "^10.9.1",
-    "nodemon": "^2.0.19",
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "banned-words-spotter": "^1.1.0"
   }
 }

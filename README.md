@@ -13,6 +13,9 @@ checks if a word or a long text contains banned words.
 hasBannedWords("Badword");
 // Output: true
 
+hasBannedWords("This is a badword!");
+// Output: true
+
 hasBannedWords("Hello world!");
 // Output: false
 
