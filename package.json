@@ -1,9 +1,9 @@
 {
   "name": "banned-words-spotter",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Banned words detector",
   "main": "build/functions.js",
-  "types": "build/functions.d.ts",
+  "types": "build/helpers/functions.d.ts",
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start:dev": "npx nodemon",
@@ -26,6 +26,6 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "banned-words-spotter": "^1.1.0"
+    "banned-words-spotter": "^1.2.2"
   }
 }

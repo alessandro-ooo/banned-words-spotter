@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var banned_words_spotter_1 = require("banned-words-spotter");
-console.log((0, banned_words_spotter_1.redactBannedWords)("Leave this fuck outta my badwording face!"));
+var functions_1 = require("./functions");
+console.log((0, functions_1.redactBannedWords)("Leave this fuck outta my badwording face! "));
 // Output: Leave this ***** outta my ***** face!
-console.log((0, banned_words_spotter_1.redactBannedWords)("Leave this fuck outta my badwording face!", "[REDACTED]"));
+console.log((0, functions_1.redactBannedWords)("Leave this fuck outta my badwording face!", "[REDACTED]"));
 // Output: Leave this [REDACTED] outta my [REDACTED] face!
-console.log((0, banned_words_spotter_1.hasBannedWords)("fuck"));
+console.log((0, functions_1.hasBannedWords)("jizz"));
 // Output: true
-console.log((0, banned_words_spotter_1.hasBannedWords)("Hello world!"));
+console.log((0, functions_1.hasBannedWords)("Hello wor ld!"));
 // Output: false

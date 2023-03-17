@@ -1,7 +1,9 @@
-# 🧰 Simple banned-words-detector
+# 🧰 Simple banned-words-detector 1.2.2
+
+### `npm i banned-words-spotter`
 
 ### Features
-
+- 70+ dirty words! List based on [encycloDB's dirty words](https://github.com/turalus/encycloDB)
 - Easy
 - Typescript 4.9.5
 
