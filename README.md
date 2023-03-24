@@ -6,6 +6,7 @@
 - 70+ dirty words! List based on [encycloDB's dirty words](https://github.com/turalus/encycloDB)
 - Easy
 - Typescript 4.9.5
+- Detects variants (example: "baaaaadword", "badwoooooooord")
 
 ### Functions
 

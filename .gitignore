@@ -105,3 +105,8 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+build/index.js
+build/helpers/banned-words.json
+build/helpers/functions.d.ts
+build/helpers/functions.js
+build/index.d.ts
